@@ -44,6 +44,9 @@ namespace Graphics {
 		bool IsButtonPressed(const char* name);
 		void EraseButton(const char* name);
 
+		void ClearConsole();
+		void ClearLogger();
+
 		GUI_VAR_DEF(Boolean, bool);
 		GUI_VAR_DEF(String, std::string);
 		GUI_VAR_DEF(Float, float);

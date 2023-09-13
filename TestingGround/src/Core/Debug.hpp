@@ -10,12 +10,12 @@ namespace Debug {
 	#pragma region Logging
 	void Log(const std::string& msg, float r, float g, float b, float a);
 	template<typename T>
-	void AddToStream(std::ostringstream& stream, const T& arg) {
+	constexpr static inline void AddToStream(std::ostringstream& stream, const T& arg) {
 		stream << arg;
 	}
 
 	template<typename T, typename... Args>
-	void AddToStream(std::ostringstream& stream, const T& arg, const Args&... args) {
+	constexpr static inline void AddToStream(std::ostringstream& stream, const T& arg, const Args&... args) {
 		stream << arg;
 		AddToStream(stream, args...);
 	}
@@ -51,6 +51,7 @@ namespace Debug {
 	}
 	#pragma endregion
 
+	#pragma region Console
 	#define DEBUG_VAR_DEF(TYPE_NAMING, TYPE)\
 	TYPE Get##TYPE_NAMING(const char* name);\
 	void Set##TYPE_NAMING(const char* name, TYPE value);\
@@ -68,4 +69,8 @@ namespace Debug {
 
 	DEBUG_VAR_INPUT_DEF(Float);
 	DEBUG_VAR_INPUT_DEF(Integer);
+
+	void ClearLogger();
+	void ClearConsole();
+	#pragma endregion
 }

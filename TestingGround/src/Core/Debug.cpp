@@ -41,3 +41,13 @@ DEBUG_VAR_IMP(Integer, int);
 
 DEBUG_VAR_INPUT_IMP(Float);
 DEBUG_VAR_INPUT_IMP(Integer);
+
+void Debug::ClearLogger()
+{
+	Graphics::Console::ClearLogger();
+}
+
+void Debug::ClearConsole()
+{
+	Graphics::Console::ClearConsole();
+}

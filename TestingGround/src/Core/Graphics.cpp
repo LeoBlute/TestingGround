@@ -66,6 +66,11 @@ void Graphics::Console::EraseButton(const char* name)
 		ConsoleButtons.erase(it);
 }
 
+void Graphics::Console::ClearLogger()
+{
+	LoggerMessages.clear();
+}
+
 GUI_VAR_IMP(Boolean, bool);
 GUI_VAR_IMP(String, std::string);
 GUI_VAR_IMP(Float, float);
@@ -277,13 +282,26 @@ void Graphics::Console::PushToRender()
 	{
 		const char* button_text = Application::IsPaused() ? "Unpause" : "Pause";
 
-		bool button = ImGui::Button(button_text);
-		if (button)
+		if (ImGui::Button("Clear Logger"))
+			ClearLogger();
+		if (ImGui::Button("Clear Console"))
+			ClearConsole();
+		if (ImGui::Button(button_text))
 		{
 			Application::SetPause(!(Application::IsPaused()));
 		}
 		ImGui::End();
 	}
+}
+
+void Graphics::Console::ClearConsole()
+{
+	ConsoleBooleans.clear();
+	ConsoleButtons.clear();
+	ConsoleDoubles.clear();
+	ConsoleFloats.clear();
+	ConsoleIntegers.clear();
+	ConsoleStrings.clear();
 }
 
 void Graphics::Console::LogMessage(const char* msg, const Color& color)
