@@ -1,4 +1,4 @@
-'# TestingGround
+# TestingGround
 
 TestingGround is a framework application meant for quick debugging and nothing else<br />
 <br />
